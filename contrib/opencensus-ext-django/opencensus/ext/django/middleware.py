@@ -141,6 +141,7 @@ class OpencensusMiddleware(MiddlewareMixin):
     """Saves the request in thread local"""
 
     def __init__(self, get_response=None):
+        super().__init__(get_response)
         self.get_response = get_response
         settings = getattr(django.conf.settings, 'OPENCENSUS', {})
         settings = settings.get('TRACE', {})
